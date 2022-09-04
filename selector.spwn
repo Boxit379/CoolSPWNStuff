@@ -1,0 +1,23 @@
+// Import gamescene library
+gs = import gamescene
+
+// Groups of the objects that decide the position of
+// our buttons
+anchors = [1g, 2g, 3g, 4g, 5g, 6g]
+
+// Group of the object that indicates which
+// button is currently selected
+selector = 7g
+
+// Track the selected object
+selected = counter(0)
+
+// On left mouse button pressed
+on(gs.button_a(), !{
+    selected += 1
+    if selected >= anchors.length {
+        selected = 0
+    }
+    current_anchor = anchors[selected.to_const(0..anchors.length)]
+    selector.move_to(current_anchor)
+})
